@@ -26,20 +26,15 @@ twitter = Twython(
     access_token_secret
 )
 
-
-#os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/pi/Scripts/MFPf5b20684e371.json'
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/Users/Felix/Scripts/CameraTrap/MFPf5b20684e371.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/path/to/json/file'
 
 """Detect labels given a file path."""
 video_client = videointelligence.VideoIntelligenceServiceClient()
 features = [videointelligence.Feature.OBJECT_TRACKING] #videointelligence.Feature.LABEL_DETECTION]
 
 path = sys.argv[-2]
-#path = '/var/www/html/media/'
 
 video_path = sys.argv[-1]
-#video_path = path + 'Dec2/vi_0131_20200616_051641.mp4'
 
 print("\nReading video {}...".format(video_path))
 
@@ -100,7 +95,6 @@ for i, object_label in enumerate(object_labels):
 print('=' * 30)
 
 bbox_area = 0
-#frame_counter = 0
 
 if trigger_bird_id is True:
     
